@@ -8,7 +8,7 @@ exports.verificacionToken = async (req, res, next) => {
     let SECRET_KEY_JWT = process.env.SECRET_KEY_JWT
     let token = req.headers.authorization
     token = token.split(' ')[1]
-    console.log(token);    
+    console.log(token);      
 
     jwt.verify(token, SECRET_KEY_JWT, (error, decoded)=> {
 

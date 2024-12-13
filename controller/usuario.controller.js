@@ -37,8 +37,10 @@ exports.obtenerUnUsuario = async (req, res)=>{
 }
 exports.crearUsuario = async (req, res)=>{
         try {
-                let regexEmail = /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/
+                let regexEmail = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
                 let data = req.body
+                console.log(data);
+                
 
                 if (regexEmail.test(data.email)) {
                     let user = await usuarioModel.findOne({ email:data.email })
@@ -147,7 +149,7 @@ exports.inicioSesion = async (req, res)=>{
                 }
                 let SECRET_KEY_JWT = process.env.SECRET_KEY_JWT
                 let token =jwt.sign(payload, SECRET_KEY_JWT, {expiresIn: '24h'} )
-                res.status(200).send(token)
+                res.status(200).json(token)
 
 //                  tokenn recibe 3 parametros
                 // informacion (payload)=infromacion que voy a guardar en ese token

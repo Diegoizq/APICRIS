@@ -1,5 +1,6 @@
 const { trusted } = require('mongoose')
 const productoModel = require ('../models/prodructo.model')
+const prodructoModel = require('../models/prodructo.model')
 require ('dotenv').config()
 
 productoModel
@@ -52,14 +53,15 @@ exports.actualizarProducto = async (req, res) => {
     try {
         let id = req.params.id
         let data = req.body
-        let prodructo = await productoModel.findById(id)
-        Object.assign(prodructo, data)
+        let producto = await productoModel.findById(id)
+        Object.assign(producto, data)
 
-        let actualizado = await prodructoModel.findOneAndUpdate({_id:id}, product)
+        let actualizado = await prodructoModel.findOneAndUpdate({_id:id}, producto)
         res.status(200).json(actualizado)
+
     } catch (error) {
         console.log(error);
-        res.status500.send({error:"ha ocurrido un error"}) 
+        res.status(500).send({error:"ha ocurrido un error"}) 
     }
     
 }

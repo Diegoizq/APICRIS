@@ -8,8 +8,7 @@ const productoModel = mongoose.Schema ({
     },
     tipo: {
         type: String,
-        enum: ['Fruta', 'Verdura'],
-        required: true
+        required: false
     },
     precio: {
         type: Number,
@@ -17,14 +16,17 @@ const productoModel = mongoose.Schema ({
     },
     stock: {
         type: Number,
-        required: true
+        required: false
     },
     descripcion: {
-        type: String
+        type: String,
+        required:false
     },
     imagen: {
-        type: String // Campo para la URL de la imagen
-    }
+        type: String,
+        required: true
+    },
+   
 })
 
 module.exports = mongoose.model('producto', productoModel)

@@ -7,7 +7,7 @@ const usuarioModel = mongoose.Schema({
     },
     apellido: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
@@ -15,26 +15,28 @@ const usuarioModel = mongoose.Schema({
     },
     edad: {
         type: Number,
-        required: true
+        required:  false
     },
     activo:{
         type: Boolean,
         required: true,
         default: true
     },
+    password:{
+        type: String,
+        required: true
+    },
     imagen:{
         type: String,
         required: true
+    
     },
     roll:{
         type: String,
         required: true,
         default: "user"
-    },
-    password:{
-        type: String,
-        required: true
-    },
+    }
+
 }
 ,{ 
     versionKey: false,
